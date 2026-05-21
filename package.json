@@ -1,0 +1,17 @@
+{
+  "name": "rent-smart",
+  "version": "1.0.0",
+  "description": "AI-powered rental assistant — Rent smarter, move with confidence",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.52.0"
+  },
+  "devDependencies": {
+    "electron": "^42.0.0"
+  },
+  "author": "Rent Smart",
+  "license": "MIT"
+}

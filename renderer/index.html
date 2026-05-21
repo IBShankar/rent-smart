@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent Smart</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ── Custom Title Bar ─────────────────────────────────────────────────── -->
+  <div class="titlebar">
+    <div class="titlebar-drag"></div>
+    <div class="window-controls">
+      <button class="wc-btn wc-min" title="Minimize" onclick="api.minimize()">
+        <svg width="12" height="12" viewBox="0 0 12 12"><rect x="1" y="5.5" width="10" height="1" fill="currentColor" rx="0.5"/></svg>
+      </button>
+      <button class="wc-btn wc-max" title="Maximise" onclick="api.maximize()">
+        <svg width="12" height="12" viewBox="0 0 12 12"><rect x="1.5" y="1.5" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.2" rx="1.5"/></svg>
+      </button>
+      <button class="wc-btn wc-close" title="Close" onclick="api.close()">
+        <svg width="12" height="12" viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="10" y1="2" x2="2" y2="10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Navigation ───────────────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav-brand">
+      <svg class="brand-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="7" fill="#2a6049"/>
+        <path d="M14 6.5L5.5 13.5V22.5H11V17H17V22.5H22.5V13.5L14 6.5Z" fill="white"/>
+      </svg>
+      <span class="brand-name">Rent Smart</span>
+    </div>
+    <div class="nav-links">
+      <a class="nav-link active" data-page="home">Home</a>
+      <a class="nav-link" data-page="find-area">Find Area</a>
+      <a class="nav-link" data-page="decode">Decode Neighbourhood</a>
+      <a class="nav-link" data-page="lease">Lease Checker</a>
+    </div>
+    <button class="nav-settings" id="settingsBtn" title="Settings">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- ── Pages ────────────────────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- HOME ─────────────────────────────────────────────────────────────── -->
+    <div class="page active" id="page-home">
+      <div class="hero">
+        <div class="claude-badge">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#2a6049"><path d="M8 1l1.5 4.5L14 7l-4.5 1.5L8 13l-1.5-4.5L2 7l4.5-1.5z"/></svg>
+          POWERED BY CLAUDE AI
+        </div>
+        <h1 class="hero-title">Rent <em>smarter,</em><br>move with confidence</h1>
+        <p class="hero-sub">Three AI-powered tools to help tenants find the right area, understand their neighbourhood, and sign their lease safely.</p>
+        <div class="hero-ctas">
+          <button class="btn-primary" data-navigate="find-area">Find My Area →</button>
+          <button class="btn-outline" data-navigate="lease">Check My Lease</button>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card" data-navigate="find-area">
+          <div class="card-icon-wrap teal">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <h3>Relocation Advisor</h3>
+          <p>Tell us your lifestyle, budget, and job. Claude recommends the best neighbourhoods for you — personalised, not generic.</p>
+          <span class="card-cta">FIND YOUR AREA</span>
+        </div>
+
+        <div class="feature-card" data-navigate="decode">
+          <div class="card-icon-wrap green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </div>
+          <h3>Neighbourhood Decoder</h3>
+          <p>Paste any area name and get a full breakdown — safety, commute, lifestyle, and value score — before you commit.</p>
+          <span class="card-cta">KNOW BEFORE YOU GO</span>
+        </div>
+
+        <div class="feature-card" data-navigate="lease">
+          <div class="card-icon-wrap amber">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <h3>Lease Clause Explainer</h3>
+          <p>Paste any confusing lease clause. Claude translates the legal jargon and flags any red flags you should question.</p>
+          <span class="card-cta">SIGN SAFELY</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIND AREA ────────────────────────────────────────────────────────── -->
+    <div class="page" id="page-find-area">
+      <div class="page-header">
+        <div class="page-icon teal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <h2>Relocation Advisor</h2>
+          <p>Tell Claude your preferences and it will recommend 3 perfect neighbourhoods.</p>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label>City or Region</label>
+            <input type="text" id="rel-city" placeholder="e.g. London, New York, Dubai…" class="input">
+          </div>
+          <div class="form-group">
+            <label>Monthly Budget</label>
+            <input type="text" id="rel-budget" placeholder="e.g. £1,500/month or $2,000" class="input">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Your Lifestyle <span class="label-hint">(select all that apply)</span></label>
+          <div class="chips" id="lifestyle-chips">
+            <div class="chip" data-value="Quiet &amp; Peaceful">Quiet &amp; Peaceful</div>
+            <div class="chip" data-value="Nightlife &amp; Social">Nightlife &amp; Social</div>
+            <div class="chip" data-value="Green Spaces &amp; Parks">Green Spaces &amp; Parks</div>
+            <div class="chip" data-value="Good Schools Nearby">Good Schools Nearby</div>
+            <div class="chip" data-value="Very Walkable">Very Walkable</div>
+            <div class="chip" data-value="Pet Friendly">Pet Friendly</div>
+            <div class="chip" data-value="Excellent Public Transport">Excellent Public Transport</div>
+            <div class="chip" data-value="Cultural &amp; Arts Scene">Cultural &amp; Arts Scene</div>
+            <div class="chip" data-value="Family Friendly">Family Friendly</div>
+            <div class="chip" data-value="Remote Work Friendly">Remote Work Friendly</div>
+            <div class="chip" data-value="Foodie Scene">Foodie Scene</div>
+            <div class="chip" data-value="Shopping &amp; Markets">Shopping &amp; Markets</div>
+          </div>
+        </div>
+
+        <button class="btn-primary btn-full" id="rel-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Find My Neighbourhoods
+        </button>
+      </div>
+
+      <div id="rel-results" class="results hidden"></div>
+    </div>
+
+    <!-- DECODE ───────────────────────────────────────────────────────────── -->
+    <div class="page" id="page-decode">
+      <div class="page-header">
+        <div class="page-icon green">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div>
+          <h2>Neighbourhood Decoder</h2>
+          <p>Get scores out of 10 for Safety, Affordability, Transport, Lifestyle &amp; Family before you commit.</p>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-group">
+          <label>Area or Neighbourhood Name</label>
+          <input type="text" id="dec-area" placeholder="e.g. Shoreditch London, Brooklyn New York, Jumeirah Dubai…" class="input">
+        </div>
+        <button class="btn-primary btn-full" id="dec-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Decode This Neighbourhood
+        </button>
+      </div>
+
+      <div id="dec-results" class="results hidden"></div>
+    </div>
+
+    <!-- LEASE ────────────────────────────────────────────────────────────── -->
+    <div class="page" id="page-lease">
+      <div class="page-header">
+        <div class="page-icon amber">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div>
+          <h2>Lease Clause Explainer</h2>
+          <p>Paste any confusing clause — Claude translates the legal jargon and flags red flags instantly.</p>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="form-group">
+          <label>Paste Your Lease Clause</label>
+          <textarea id="lease-clause" class="textarea" rows="7" placeholder="e.g. The Tenant shall not make any alterations, additions or improvements to the Property without the prior written consent of the Landlord, such consent not to be unreasonably withheld…"></textarea>
+        </div>
+        <button class="btn-primary btn-full" id="lease-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Analyse This Clause
+        </button>
+      </div>
+
+      <div id="lease-results" class="results hidden"></div>
+    </div>
+
+  </main>
+
+  <!-- ── Settings Modal ───────────────────────────────────────────────────── -->
+  <div class="modal-overlay hidden" id="settingsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Settings</h3>
+        <button class="modal-close" id="settingsClose">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Claude API Key</label>
+          <p class="field-hint">Get your key at <strong>console.anthropic.com</strong> → API Keys</p>
+          <input type="password" id="api-key-input" class="input" placeholder="sk-ant-api03-…" autocomplete="off">
+        </div>
+        <div id="settings-msg" class="settings-msg hidden"></div>
+        <button class="btn-primary btn-full" id="saveApiKey">Save API Key</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── API Key First-Run Banner ──────────────────────────────────────────── -->
+  <div class="banner hidden" id="noKeyBanner">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span>No API key found. <button class="banner-link" id="bannerOpenSettings">Add your Claude API key in Settings</button> to use the AI features.</span>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
